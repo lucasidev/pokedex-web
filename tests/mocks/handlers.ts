@@ -31,7 +31,7 @@ export const handlers = [
   http.post(`${BASE}/auth/signin`, async ({ request }) => {
     const body = (await request.json()) as { email?: string; password?: string };
     if (body.email === 'ash@example.com' && body.password === 'pikapika') {
-      return HttpResponse.json({ status: 'OK', code: 200, data: { token: 'fake.jwt.token' } });
+      return HttpResponse.json({ token: 'fake.jwt.token' });
     }
     return HttpResponse.json(
       { status: 'Unauthorized', code: 401, message: 'Invalid credentials' },
@@ -40,19 +40,16 @@ export const handlers = [
   }),
 
   http.post(`${BASE}/auth/signup`, async () => {
-    return HttpResponse.json(
-      { status: 'Created', code: 201, data: { token: 'fake.jwt.token' } },
-      { status: 201 },
-    );
+    return HttpResponse.json({ token: 'fake.jwt.token' }, { status: 201 });
   }),
 
   http.get(`${BASE}/users/using-token`, () => {
-    return HttpResponse.json({ status: 'OK', code: 200, data: testUser });
+    return HttpResponse.json(testUser);
   }),
 
   http.get(`${BASE}/pokemon/:name`, ({ params }) => {
     if (params.name === 'pikachu') {
-      return HttpResponse.json({ status: 'OK', code: 200, data: pikachu });
+      return HttpResponse.json(pikachu);
     }
     return HttpResponse.json(
       { status: 'Not Found', code: 404, message: 'not found' },
