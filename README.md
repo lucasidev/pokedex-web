@@ -117,10 +117,11 @@ src/
 ## Como consume la API
 
 Todas las llamadas pasan por `lib/api.ts` con base `VITE_API_URL`. El
-backend responde con el envelope `{ status, code, data?, message? }`; el
-cliente desempaqueta `data`. Los pokemones se piden al proxy del backend
-(`/api/pokemon/:name`), no a pokeapi.co directo, para aprovechar la cache
-Redis y recibir el shape normalizado.
+backend devuelve el payload directo en respuestas de exito (la lista,
+el user, `{ token }`, etc.) y `204 No Content` en las mutaciones; los
+errores traen `{ status, code, message }`. Los pokemones se piden al
+proxy del backend (`/api/pokemon/:name`), no a pokeapi.co directo, para
+aprovechar la cache Redis y recibir el shape normalizado.
 
 ## Docker
 
