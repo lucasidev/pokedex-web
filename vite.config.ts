@@ -27,6 +27,10 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./tests/setup.ts'],
     css: false,
+    // Absolute base so axios builds full URLs that MSW can intercept in jsdom.
+    env: {
+      VITE_API_URL: 'http://localhost:3000/api',
+    },
     coverage: {
       provider: 'v8',
       reporter: ['text', 'lcov', 'html'],
