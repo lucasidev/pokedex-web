@@ -1,11 +1,3 @@
-// Mirrors the success envelope the backend returns: { status, code, data?, message? }.
-export interface ApiEnvelope<T> {
-  status: string;
-  code: number;
-  data?: T;
-  message?: string;
-}
-
 export interface AuthToken {
   token: string;
 }
