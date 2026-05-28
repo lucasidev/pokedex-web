@@ -29,6 +29,7 @@ export function SignInForm({ onSuccess }: SignInFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
+      noValidate
       className="flex w-96 flex-col gap-4 border-2 border-slate-950 px-16 py-8"
     >
       <FormField
