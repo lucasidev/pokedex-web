@@ -1,7 +1,7 @@
+import { type FormEvent, useState } from 'react';
 import { Button } from '@/components/Button';
 import { FormField } from '@/components/FormField';
 import { fieldErrors } from '@/lib/forms';
-import { type FormEvent, useState } from 'react';
 import { useSignUp } from './auth.queries';
 import { signUpSchema } from './auth.schemas';
 

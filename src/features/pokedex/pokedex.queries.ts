@@ -1,5 +1,5 @@
-import { meKey } from '@/features/auth/auth.queries';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { meKey } from '@/features/auth/auth.queries';
 import { catchPokemon, releasePokemon } from './pokedex.api';
 
 export function useCatchPokemon() {

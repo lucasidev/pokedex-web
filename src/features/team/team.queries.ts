@@ -1,5 +1,5 @@
-import { meKey } from '@/features/auth/auth.queries';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { meKey } from '@/features/auth/auth.queries';
 import { addToTeam, createTeam, deleteTeam, removeFromTeam } from './team.api';
 
 function useTeamMutation<TArg>(mutationFn: (arg: TArg) => Promise<void>) {

@@ -1,5 +1,5 @@
-import type { PokemonSummary } from '@/types/api';
 import { useQueries, useQuery } from '@tanstack/react-query';
+import type { PokemonSummary } from '@/types/api';
 import { getPokemon } from './pokemon.api';
 
 export const pokemonKey = (name: string) => ['pokemon', name] as const;
