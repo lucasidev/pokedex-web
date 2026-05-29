@@ -25,7 +25,7 @@ ENV VITE_API_URL=${VITE_API_URL}
 RUN npm run build
 
 # Stage 2: runtime
-FROM nginx:1.27-alpine AS runtime
+FROM nginx:1.31-alpine AS runtime
 
 # nginx:alpine runs envsubst over /etc/nginx/templates/*.template at boot,
 # substituting only real env vars, so $host/$uri stay intact.
