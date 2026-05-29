@@ -127,7 +127,7 @@ jobs:
       - run: npm run test:coverage
 
       - name: SonarCloud scan
-        uses: SonarSource/sonarqube-scan-action@v3
+        uses: SonarSource/sonarqube-scan-action@v8
         if: ${{ env.SONAR_TOKEN != '' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
