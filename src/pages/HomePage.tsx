@@ -49,7 +49,7 @@ export function HomePage() {
             className="border-slate-950 border-b-2 bg-orange-50 outline-none"
           />
         </label>
-        <Button type="submit" color="positive" disabled={catchPokemon.isPending}>
+        <Button type="submit" variant="positive" disabled={catchPokemon.isPending}>
           {catchPokemon.isPending ? 'Capturando...' : 'Capturar'}
         </Button>
       </form>
@@ -85,7 +85,7 @@ export function HomePage() {
               actions={
                 <>
                   <Button
-                    color="warning"
+                    variant="warning"
                     disabled={releasePokemon.isPending}
                     onClick={() => releasePokemon.mutate(active.name)}
                   >
@@ -128,7 +128,7 @@ function TeamToggle({
   if (inTeam) {
     return (
       <Button
-        color="negative"
+        variant="negative"
         disabled={removeFromTeam.isPending}
         onClick={() => removeFromTeam.mutate(pokemonName)}
       >
@@ -138,7 +138,7 @@ function TeamToggle({
   }
   return (
     <Button
-      color="positive"
+      variant="positive"
       disabled={addToTeam.isPending}
       onClick={() => addToTeam.mutate(pokemonName)}
     >

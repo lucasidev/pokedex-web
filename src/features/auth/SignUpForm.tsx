@@ -66,7 +66,7 @@ export function SignUpForm({ onSuccess }: SignUpFormProps) {
       />
       {signUp.isError && <p className="text-rose-600 text-sm">No se pudo crear la cuenta</p>}
       <div className="flex justify-end">
-        <Button type="submit" color="positive" disabled={signUp.isPending}>
+        <Button type="submit" variant="positive" disabled={signUp.isPending}>
           {signUp.isPending ? 'Creando...' : 'Sign up'}
         </Button>
       </div>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { cn } from '@/lib/cn';
 import { SignInForm } from './SignInForm';
 import { SignUpForm } from './SignUpForm';
 
@@ -35,5 +36,8 @@ export function AuthPage() {
 }
 
 function tabClass(active: boolean): string {
-  return active ? 'border-cyan-950 border-b-2 text-cyan-950' : 'text-zinc-500 hover:text-cyan-950';
+  return cn(
+    'text-zinc-500 hover:text-cyan-950',
+    active && 'border-cyan-950 border-b-2 text-cyan-950',
+  );
 }

@@ -34,7 +34,7 @@ export function TeamPanel({ user, teamPokemons }: TeamPanelProps) {
             className="border-slate-50 border-b-2 bg-slate-800 px-1 text-slate-50 outline-none"
           />
         </label>
-        <Button type="submit" color="positive" disabled={createTeam.isPending}>
+        <Button type="submit" variant="positive" disabled={createTeam.isPending}>
           Crear
         </Button>
       </form>
@@ -45,7 +45,11 @@ export function TeamPanel({ user, teamPokemons }: TeamPanelProps) {
     <section className="flex flex-col gap-2 bg-slate-900 p-4">
       <div className="flex items-center justify-between">
         <h2 className="font-semibold text-slate-50 text-xl">{user.poketeam.name}</h2>
-        <Button color="warning" disabled={deleteTeam.isPending} onClick={() => deleteTeam.mutate()}>
+        <Button
+          variant="warning"
+          disabled={deleteTeam.isPending}
+          onClick={() => deleteTeam.mutate()}
+        >
           Eliminar equipo
         </Button>
       </div>
