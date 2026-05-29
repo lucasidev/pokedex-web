@@ -24,7 +24,7 @@ export function Header() {
           {token && user ? (
             <>
               <span>{user.username}</span>
-              <Button color="warning" onClick={handleLogOut}>
+              <Button variant="warning" onClick={handleLogOut}>
                 Log out
               </Button>
             </>

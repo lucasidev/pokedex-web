@@ -50,7 +50,7 @@ export function SignInForm({ onSuccess }: SignInFormProps) {
       />
       {signIn.isError && <p className="text-rose-600 text-sm">Credenciales invalidas</p>}
       <div className="flex justify-end">
-        <Button type="submit" color="positive" disabled={signIn.isPending}>
+        <Button type="submit" variant="positive" disabled={signIn.isPending}>
           {signIn.isPending ? 'Ingresando...' : 'Login'}
         </Button>
       </div>

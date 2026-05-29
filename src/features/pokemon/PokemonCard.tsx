@@ -1,3 +1,4 @@
+import { cn } from '@/lib/cn';
 import type { PokemonSummary } from '@/types/api';
 
 interface PokemonCardProps {
@@ -11,7 +12,7 @@ export function PokemonCard({ pokemon, onSelect, selected }: PokemonCardProps) {
     <button
       type="button"
       onClick={() => onSelect?.(pokemon)}
-      className={`flex w-32 flex-col p-2 ${selected ? 'ring-2 ring-orange-400' : ''}`}
+      className={cn('flex w-32 flex-col p-2', selected && 'ring-2 ring-orange-400')}
     >
       {pokemon.sprites.front_default ? (
         <img src={pokemon.sprites.front_default} alt={pokemon.name} />
