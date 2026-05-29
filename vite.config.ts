@@ -35,7 +35,23 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'lcov', 'html'],
       include: ['src/**/*.{ts,tsx}'],
-      exclude: ['src/**/*.d.ts', 'src/main.tsx', 'src/**/*.test.{ts,tsx}'],
+      exclude: [
+        'src/**/*.d.ts',
+        'src/**/*.test.{ts,tsx}',
+        // Wiring/config with no logic to unit-test (parallels the backend
+        // excluding its infra adapters): the bootstrap, the query client
+        // config and the type-only module.
+        'src/main.tsx',
+        'src/lib/queryClient.ts',
+        'src/types/**',
+      ],
+      // Same gate as the backend (60% across the four metrics).
+      thresholds: {
+        statements: 60,
+        branches: 60,
+        functions: 60,
+        lines: 60,
+      },
     },
   },
 });
