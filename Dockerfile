@@ -14,7 +14,7 @@ COPY package.json package-lock.json ./
 RUN npm install --no-audit --no-fund --ignore-scripts
 
 COPY tsconfig.json tsconfig.node.json vite.config.ts index.html ./
-COPY postcss.config.js tailwind.config.js ./
+COPY postcss.config.js ./
 COPY src ./src
 
 # VITE_API_URL is inlined at build time. Default stays relative (/api)
@@ -25,7 +25,7 @@ ENV VITE_API_URL=${VITE_API_URL}
 RUN npm run build
 
 # Stage 2: runtime
-FROM nginx:1.27-alpine AS runtime
+FROM nginx:1.31-alpine AS runtime
 
 # nginx:alpine runs envsubst over /etc/nginx/templates/*.template at boot,
 # substituting only real env vars, so $host/$uri stay intact.
