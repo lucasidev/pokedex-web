@@ -3,15 +3,29 @@ import { http, HttpResponse } from 'msw';
 
 const BASE = 'http://localhost:3000/api';
 
-export const testUser: User = {
-  _id: 'u1',
-  name: 'Ash Ketchum',
-  username: 'ash',
-  email: 'ash@example.com',
-  pokedex: ['pikachu'],
-  poketeam: null,
-  roles: ['user'],
-};
+function freshUser(): User {
+  return {
+    _id: 'u1',
+    name: 'Ash Ketchum',
+    username: 'ash',
+    email: 'ash@example.com',
+    pokedex: ['pikachu'],
+    poketeam: null,
+    roles: ['user'],
+  };
+}
+
+// Mutable user so the mutation endpoints reflect in subsequent reads
+// (the UI refetches /users/using-token after each mutation).
+let currentUser: User = freshUser();
+
+export function resetTestUser(): void {
+  currentUser = freshUser();
+}
+
+export function getTestUser(): User {
+  return currentUser;
+}
 
 const pikachu: PokemonSummary = {
   id: 25,
@@ -44,16 +58,51 @@ export const handlers = [
   }),
 
   http.get(`${BASE}/users/using-token`, () => {
-    return HttpResponse.json(testUser);
+    return HttpResponse.json(currentUser);
   }),
 
   http.get(`${BASE}/pokemon/:name`, ({ params }) => {
-    if (params.name === 'pikachu') {
-      return HttpResponse.json(pikachu);
+    return HttpResponse.json({ ...pikachu, name: String(params.name) });
+  }),
+
+  http.put(`${BASE}/users/pokedex/catch-pokemon`, async ({ request }) => {
+    const { pokemonName } = (await request.json()) as { pokemonName: string };
+    if (!currentUser.pokedex.includes(pokemonName)) {
+      currentUser.pokedex.push(pokemonName);
     }
-    return HttpResponse.json(
-      { status: 'Not Found', code: 404, message: 'not found' },
-      { status: 404 },
-    );
+    return new HttpResponse(null, { status: 204 });
+  }),
+
+  http.put(`${BASE}/users/pokedex/release-pokemon`, async ({ request }) => {
+    const { pokemonName } = (await request.json()) as { pokemonName: string };
+    currentUser.pokedex = currentUser.pokedex.filter((p) => p !== pokemonName);
+    return new HttpResponse(null, { status: 204 });
+  }),
+
+  http.put(`${BASE}/users/poketeam/create`, async ({ request }) => {
+    const { teamName } = (await request.json()) as { teamName: string };
+    currentUser.poketeam = { name: teamName, pokemon: [] };
+    return new HttpResponse(null, { status: 204 });
+  }),
+
+  http.put(`${BASE}/users/poketeam/delete`, () => {
+    currentUser.poketeam = null;
+    return new HttpResponse(null, { status: 204 });
+  }),
+
+  http.put(`${BASE}/users/poketeam/add-pokemon`, async ({ request }) => {
+    const { pokemonName } = (await request.json()) as { pokemonName: string };
+    if (currentUser.poketeam && !currentUser.poketeam.pokemon.includes(pokemonName)) {
+      currentUser.poketeam.pokemon.push(pokemonName);
+    }
+    return new HttpResponse(null, { status: 204 });
+  }),
+
+  http.put(`${BASE}/users/poketeam/remove-pokemon`, async ({ request }) => {
+    const { pokemonName } = (await request.json()) as { pokemonName: string };
+    if (currentUser.poketeam) {
+      currentUser.poketeam.pokemon = currentUser.poketeam.pokemon.filter((p) => p !== pokemonName);
+    }
+    return new HttpResponse(null, { status: 204 });
   }),
 ];
