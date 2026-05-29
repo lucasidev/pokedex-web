@@ -1,6 +1,6 @@
+import { beforeEach, describe, expect, it } from 'vitest';
 import { useAuthStore } from '@/features/auth/auth.store';
 import { HomePage } from '@/pages/HomePage';
-import { beforeEach, describe, expect, it } from 'vitest';
 import { renderWithProviders, screen, waitFor } from './test-utils';
 
 describe('HomePage', () => {

@@ -1,6 +1,6 @@
+import { Link, useNavigate } from 'react-router-dom';
 import { useMe, useSignOut } from '@/features/auth/auth.queries';
 import { useAuthStore } from '@/features/auth/auth.store';
-import { Link, useNavigate } from 'react-router-dom';
 import { Button } from './Button';
 
 export function Header() {

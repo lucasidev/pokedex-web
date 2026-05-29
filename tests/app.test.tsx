@@ -1,7 +1,7 @@
-import { App } from '@/App';
-import { useAuthStore } from '@/features/auth/auth.store';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
+import { App } from '@/App';
+import { useAuthStore } from '@/features/auth/auth.store';
 import { renderWithProviders, screen, waitFor } from './test-utils';
 
 describe('App', () => {

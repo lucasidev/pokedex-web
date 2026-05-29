@@ -1,7 +1,7 @@
-import { SignInForm } from '@/features/auth/SignInForm';
-import { useAuthStore } from '@/features/auth/auth.store';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
+import { useAuthStore } from '@/features/auth/auth.store';
+import { SignInForm } from '@/features/auth/SignInForm';
 import { renderWithProviders, screen, waitFor } from './test-utils';
 
 describe('SignInForm', () => {

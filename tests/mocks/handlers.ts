@@ -1,5 +1,5 @@
+import { HttpResponse, http } from 'msw';
 import type { PokemonSummary, User } from '@/types/api';
-import { http, HttpResponse } from 'msw';
 
 const BASE = 'http://localhost:3000/api';
 

@@ -1,7 +1,7 @@
-import { useAuthStore } from '@/features/auth/auth.store';
-import { HomePage } from '@/pages/HomePage';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
+import { useAuthStore } from '@/features/auth/auth.store';
+import { HomePage } from '@/pages/HomePage';
 import { renderWithProviders, screen, waitFor } from './test-utils';
 
 describe('HomePage mutations', () => {

@@ -1,5 +1,5 @@
-import type { PokemonSummary } from '@/types/api';
 import type { ReactNode } from 'react';
+import type { PokemonSummary } from '@/types/api';
 
 interface PokemonDetailProps {
   pokemon: PokemonSummary;

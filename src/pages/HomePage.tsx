@@ -1,3 +1,4 @@
+import { type FormEvent, useState } from 'react';
 import { Button } from '@/components/Button';
 import { Loading } from '@/components/Loading';
 import { useMe } from '@/features/auth/auth.queries';
@@ -8,7 +9,6 @@ import { usePokemonList } from '@/features/pokemon/pokemon.queries';
 import { TeamPanel } from '@/features/team/TeamPanel';
 import { useAddToTeam, useRemoveFromTeam } from '@/features/team/team.queries';
 import type { PokemonSummary } from '@/types/api';
-import { type FormEvent, useState } from 'react';
 
 export function HomePage() {
   const { data: user } = useMe();
