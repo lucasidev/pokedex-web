@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.16",
-    "@cyclonedx/cyclonedx-npm": "^2.0.0",
+    "@cyclonedx/cyclonedx-npm": "^4.2.1",
     "@tanstack/react-query-devtools": "^5.62.7",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
