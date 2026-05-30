@@ -36,5 +36,7 @@ ENV BACKEND_URL=http://pokedex-api:3000
 
 EXPOSE 80
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+# Standardized across the project: interval 10s, timeout 5s, 5 retries,
+# 15s grace. Probes the served SPA index over nginx.
+HEALTHCHECK --interval=10s --timeout=5s --start-period=15s --retries=5 \
   CMD wget --quiet --tries=1 --spider http://localhost:80/ || exit 1
